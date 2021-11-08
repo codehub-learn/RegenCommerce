@@ -1,5 +1,6 @@
 ﻿using RegenCommerce.Model;
 using System;
+using System.Collections.Generic;
 
 namespace RegenCommerce
 {
@@ -7,9 +8,23 @@ namespace RegenCommerce
     {
         public static void Main(string[] args)
         {
+
+            DoWork();
+
+        }
+
+        private static void DoWork()
+        {
+            string userName;
+            Console.WriteLine("Give your name ");
+            userName = Console.ReadLine();
+
+            Console.WriteLine("hello " + userName);
+
+
             string greeting = "Hello ";
-           
-            var customer = new Customer 
+
+            var customer = new Customer
             {
                 FirstName = "Ioannis",
                 LastName = "Eleftheriou",
@@ -19,21 +34,22 @@ namespace RegenCommerce
 
 
             var cust2 = customer;
-
-           
+            if (cust2.Balance > 100)
+                Console.WriteLine($"cust {cust2.LastName} owns {cust2.Balance}");
+            else
+                Console.WriteLine("cust " + cust2.LastName + "owns below 100 Euros");
 
 
             var cust3 = new Customer
             {
                 FirstName = customer.FirstName,
-                LastName =  customer.LastName,
+                LastName = customer.LastName,
                 Balance = 0,
                 BirthDate = new DateTime(1980, 12, 5)
             };
-                customer.FirstName = "Eirini";
+            customer.FirstName = "Eirini";
 
             Console.WriteLine(greeting + cust3.FirstName);
-
         }
     }
 }
